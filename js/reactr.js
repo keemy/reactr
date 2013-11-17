@@ -1,16 +1,24 @@
 var listOfTests=["sound","visual"];
 
 $( document ).ready(function() {
-	$.ajax("backendtest.py").done(function(data){$("#counter").text(data);});
+	function IncrementAndReturn(){
+			$.ajax("backendtest.py").done(function(data){
+			$("#counter").text(data);
+		});
+	}
+	
+	$("#counter").click(function(){
+		IncrementAndReturn();
+	});
+	
 
 	
 	
-	
 	var f1=function(event){
-	alert("f1");
+		alert("f1");
 	};
 	var f2=function(event){
-	alert("f2");
+		alert("f2");
 	};
 	
 	
