@@ -6,6 +6,11 @@ $( document ).ready(function() {
 			$("#counter").text(data);
 		});
 	}
+	function CounterValue(){
+		$.ajax("backendtest.py?readonly=true",).done(function(data){
+			$("#counter").text(data);
+		});
+	}
 	
 	IncrementAndReturn();
 	
@@ -13,7 +18,11 @@ $( document ).ready(function() {
 		IncrementAndReturn();
 	});
 	
-
+	function CounterValueCaller(){
+		CounterValue();
+		setTimeout(CounterValueCaller,500);
+	}
+	CounterValueCaller();
 	
 	
 	var f1=function(event){
