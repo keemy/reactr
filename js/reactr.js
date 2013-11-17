@@ -2,10 +2,12 @@ var listOfTests=["sound","visual"];
 
 $( document ).ready(function() {
 	function IncrementAndReturn(){
-			$.ajax("backendtest.py").done(function(data){
+		$.ajax("backendtest.py").done(function(data){
 			$("#counter").text(data);
 		});
 	}
+	
+	IncrementAndReturn();
 	
 	$("#counter").click(function(){
 		IncrementAndReturn();
