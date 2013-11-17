@@ -1,7 +1,7 @@
 var listOfTests=["sound","visual"];
 
 $( document ).ready(function() {
-	$.ajax("/backendtest.py").done(function(data){console.log(data);});
+	$.ajax("backendtest.py").done(function(data){console.log(data);});
 
 	
 	
