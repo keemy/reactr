@@ -14,7 +14,7 @@ c.execute("UPDATE counter SET num=num+1")
 
 c.execute("SELECT * from counter")
 count=c.fetchone()
-print count
+print count[0]
 
 
 
