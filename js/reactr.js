@@ -7,7 +7,7 @@ $( document ).ready(function() {
 		});
 	}
 	function CounterValue(){
-		$.ajax("backendtest.py?readonly=true",).done(function(data){
+		$.ajax("backendtest.py?readonly=true").done(function(data){
 			$("#counter").text(data);
 		});
 	}
