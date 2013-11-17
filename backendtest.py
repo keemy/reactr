@@ -1,3 +1,4 @@
 #!/usr/bin/python
+print "\r\n"
+print 1/0
 
-print "\r\nhello world"
