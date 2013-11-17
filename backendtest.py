@@ -5,6 +5,7 @@ print
 
 
 import cgitb
+import sqlite3
 cgitb.enable()
 conn = sqlite3.connect('test.db')
 c=conn.cursor()
