@@ -2,6 +2,9 @@
 import cgitb
 cgitb.enable()
 
-print "\r\n1"
+print "Content-Type: text/html"
+print
+
+print 'hiya'
 print 1/0
 
