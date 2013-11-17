@@ -1,4 +1,4 @@
 #!/usr/bin/python
-print "\r\n"
+print "\r\n1"
 print 1/0
 
