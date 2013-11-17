@@ -1,9 +1,10 @@
 var listOfTests=["sound","visual"];
 
 $( document ).ready(function() {
-	for(var i=0; i<listOfTests.length;i++){
-		$("").append('<div class="timer">woo</div>')
-	}
+	$.ajax("/backendtest.py").done(function(data){console.log(data);});
+
+	
+	
 	
 	var f1=function(event){
 	alert("f1");
@@ -12,7 +13,7 @@ $( document ).ready(function() {
 	alert("f2");
 	};
 	
-	$(".listener").click(f1);
+	
 	
 	
 });
