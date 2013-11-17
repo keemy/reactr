@@ -17,4 +17,6 @@ count=c.fetchone()
 print count[0]
 
 
+conn.commit()
+conn.close()
 
