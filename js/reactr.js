@@ -12,7 +12,11 @@ $( document ).ready(function() {
 		});
 	}
 	
-	IncrementAndReturn();
+	for(var i=0 ; i<listOfTests.length; i++){
+		$("#container").append("<div class=test id="+listOfTests[i]+">test</div")
+	
+	
+	}
 	
 	$("#counter").click(function(){
 		IncrementAndReturn();
