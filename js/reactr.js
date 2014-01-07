@@ -37,8 +37,20 @@ $( document ).ready(function() {
 		$("#Tests").append("<option>"+listOfTests[i]+"</option>");
 	}
 	
-	$(".test").append('<div class="testtime">//TODO TEST HERE</div>')
+	$(".test").append('<div class="testtime"></div>');
+	$(".testtime").append("<p>click to start</p>");
+	//$(".testtime").click(testsCode[$(".testtime").parents("div").attr("id")]);
 	//TODO make actual tests code below used 2 submit times manually
+
+	$("#visual .testtime").click(function(){
+		$(this).toggleClass('yellow');
+		$("p").slideToggle(5); 
+		
+	});
+	
+	
+	//visual test
+	
 	
 	// $(".test").append('<form class="testtime"></form>')
 	// $(".test .testtime").append('<input type="number " class="time"/>')
