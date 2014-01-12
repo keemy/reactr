@@ -136,6 +136,7 @@ $( document ).ready(function() {
 			
 			elm.find("p").hide();
 			elm.find(".resultText").text(reactionTime.toString());
+			elm.find(".resultText").append(" click to play again");
 			elm.find(".resultText").show();
 			
 			
