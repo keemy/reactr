@@ -151,7 +151,7 @@ $( document ).ready(function() {
 	};
 	
 	
-	$("#visual .start").click(function(){
+	$("#visual .start").mousedown(function(){
 		lagStart = performance.now();
 		behavior[state]();
 		
