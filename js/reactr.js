@@ -38,20 +38,29 @@ $( document ).ready(function() {
 	}
 	
 	$(".test").append('<div class="testtime start"></div>');
-	$(".testtime").append("<p1>click to start</p1>");
-	$(".testtime").append("<p2 style='display: none;'>wait for the Cue</p2>");
-	$(".testtime").append("<p3 style='display: none;'>Too Soon</p3>");
-	$(".testtime").append("<p4 style='display: none;'>GO!!</p4>");
-	$(".testtime").append("<p5 style='display: none;'></p5>");
+	$(".testtime").append("<p class='startText'>click to start</p>");
+	$(".testtime").append("<p class='waitText' style='display: none;'>wait for the Cue</p>");
+	$(".testtime").append("<p class='scoldText' style='display: none;'>Too Soon</p>");
+	$(".testtime").append("<p class='timeText' style='display: none;'>GO!!</p>");
+	$(".testtime").append("<p class='resultText' style='display: none;'></p>");
 	//$(".testtime").click(testsCode[$(".testtime").parents("div").attr("id")]);
 	//TODO make actual tests code below used 2 submit times manually
 
 	
 	var switch_random=function(){
-		timer1 = setTimeout(function() { behavior["time"](); }, 1000+Math.random()*2000);
+		timer1 = setTimeout(function() { behavior["wait2"](); }, 1500+Math.random()*3000);
 	};
 	var cancel_switch=function(){
 		clearTimeout(timer1);
+	}
+	var clear_classes=function(obj){
+		var classes=obj.attr('class').split(" ");
+		for( var i=0; i<classes.length;i++){
+				if(classes[i]!="testtime"){
+					obj.toggleClass(classes[i]);
+				}
+			}
+	
 	}
 	
 	
@@ -59,14 +68,15 @@ $( document ).ready(function() {
 	
 	var state="start";
 	var behavior={
+		
 		start:function(){
 			var elm = $("#visual .testtime")
-			elm.toggleClass('start');
+			clear_classes(elm);
 			elm.toggleClass('wait');
 			
+			elm.find("p").hide();
+			elm.find(".waitText").show();
 			
-			$("p1").slideToggle(5);
-			$("p2").slideToggle(5);
 			
 			state="wait";
 			
@@ -76,56 +86,66 @@ $( document ).ready(function() {
 			cancel_switch();
 			
 			var elm = $("#visual .testtime")
-			elm.toggleClass('wait');
+			
+			clear_classes(elm);
 			elm.toggleClass('scold');
 			
-			
-			$("p2").slideToggle(5);
-			$("p3").slideToggle(5);
-			
+			elm.find("p").hide();
+			elm.find(".scoldText").show();
+						
 			state="scold";
 		},
 		scold:function(){
 			var elm = $("#visual .testtime")
-			elm.toggleClass('scold');
+			
+			clear_classes(elm);
 			elm.toggleClass('wait');
 			
-			$("p2").slideToggle(5);
-			$("p3").slideToggle(5);
-		
+			
+			elm.find("p").hide();
+			elm.find(".waitText").show();
+					
 			state="wait";
 			
 			switch_random();
 		},
-		time:function(){
+		wait2:function(){
 			var elm = $("#visual .testtime");
-			var classes=elm.attr('class').split(" ");
-			for( var i=0; i<classes.length;i++){
-				if(classes[i]!="testtime"){
-					elm.toggleClass(classes[i]);
-				}
-			}
+			clear_classes(elm);
 			elm.toggleClass('time');
 			
-			$("p2").slideToggle(0);
-			$("p4").slideToggle(0);
+			elm.find("p").hide();
+			elm.find(".timeText").show();
+			
 			
 
 			timeStart = performance.now();
-			state="result";
+			state="time";
 			
 		},
-		result:function(){
+		time:function(){
 			
 			timeEnd= performance.now();			
 			lagEnd = performance.now();
 			reactionTime=Math.round(timeEnd-timeStart -(lagEnd-lagStart));
 			
-			$("p4").slideToggle(0);
-			$("p5").slideToggle(0);
-			$("p5").text(reactionTime.toString())
-		
+			var elm = $("#visual .testtime");
+			clear_classes(elm);
+			elm.toggleClass('result');
 			
+			
+			elm.find("p").hide();
+			elm.find(".resultText").text(reactionTime.toString());
+			elm.find(".resultText").show();
+			
+			
+			$("#results").append(reactionTime.toString());
+			$("#results").append(" ");
+			
+			state="result";
+		},
+		result:function(){
+			behavior["start"]();
 		}
 	};
 	
