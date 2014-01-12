@@ -1,45 +1,23 @@
-.start{
+.testtime{
 	width:100px;
 	height:100px;
 	border:1px solid black;
 	text-align: center;
 	display: table-cell;
 	vertical-align: middle;
+}
+.start{
 	background: orange;
 }
 .wait{
-	width:100px;
-	height:100px;
-	border:1px solid black;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
 	background: red;
 }
 .scold{
-	width:100px;
-	height:100px;
-	border:1px solid black;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
 	background: orange;
 }
 .time{
-	width:100px;
-	height:100px;
-	border:1px solid black;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
 	background: LightGreen;
 }
 .result{
-	width:100px;
-	height:100px;
-	border:1px solid black;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
 	background: blue;
 }
