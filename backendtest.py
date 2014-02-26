@@ -18,8 +18,7 @@ if "readonly" not in form:
 	pass
  #   c.execute("UPDATE counter SET num=num+1")
 else:
-	print form["readonly"] 
-	if form["readonly"]=="false":
+	if form["readonly"].value=="false":
 		print 'INSERT INTO results VALUES ( "'+form["username"]+'", '+form["result"]+', "'+form["type"]+'", datetime("now"))'
 		c.execute('INSERT INTO results VALUES ( "'+form["username"]+'", '+form["result"]+', "'+form["type"]+'", datetime("now"))')
 		
