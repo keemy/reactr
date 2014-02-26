@@ -29,11 +29,11 @@ else:
 		
 		result=clean(form["result"].value)
 		type=clean(form["type"].value)
-		print 'INSERT INTO results VALUES ( "'+userName+'", '+result+', "'+type+'", datetime("now"))'
-		c.execute('INSERT INTO results VALUES ( "'+userName+'", '+result+', "'+type+'", datetime("now"))')
+		print (userName,int(result),type)
+		c.execute('INSERT INTO results VALUES ( ?, ?, ?, datetime("now"))', (userName,int(result),type))
 		
 	else:
-		for row in c.execute("SELECT * FROM results WHERE username='"+userName+"' ORDER BY time ASC  LIMIT 10000"):
+		for row in c.execute("SELECT * FROM results WHERE username=? ORDER BY time ASC  LIMIT 10000",(userName,)):
 			print row
 		
 #c.execute("SELECT * from counter")
