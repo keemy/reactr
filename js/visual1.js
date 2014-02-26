@@ -94,6 +94,8 @@ $( document ).ready(function() {
 			$("#results").append(reactionTime.toString());
 			$("#results").append(" ");
 			
+			submitResult(reactionTime.toString(),"visual");
+			
 			state="result";
 		},
 		result:function(){

@@ -25,6 +25,11 @@ if(userName==""){
 
 function submitResult(result,type){
 	$.ajax("backendtest.py?readonly=false&username="+userName+"&result="+result.toString()+"&type="+type).done(function(data){
+		console.log(data);
+	});
+}
+function getResults(){
+	$.ajax("backendtest.py?readonly=true&username="+userName).done(function(data){
 		$("#counter").text(data);
 	});
 }
@@ -32,17 +37,10 @@ function submitResult(result,type){
 
 
 
+
 $( document ).ready(function() {
-	function submitResult(result,type){
-		$.ajax("backendtest.py?readonly=false&type="+type+"&result="+result.toString()).done(function(data){
-			$("#counter").text(data);
-		});
-	}
-	function getResults(){
-		$.ajax("backendtest.py?readonly=true").done(function(data){
-			$("#counter").text(data);
-		});
-	}
+
+
 	function runTest(type){
 		for(var i=0 ; i<listOfTests.length; i++){
 			$("#"+listOfTests[i]).css("display","none");

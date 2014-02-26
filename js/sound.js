@@ -102,6 +102,8 @@ $( document ).ready(function() {
 			$("#results").append(reactionTime.toString());
 			$("#results").append(" ");
 			
+			submitResult(reactionTime.toString(),"sound");
+			
 			state="result";
 		},
 		result:function(){

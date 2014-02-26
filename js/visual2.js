@@ -95,7 +95,7 @@ $( document ).ready(function() {
 			$("#results").append(" ");
 			
 			submitResult(reactionTime.toString(),"visual2");
-			console.log("hello");
+			
 			
 			state="result";
 		},
