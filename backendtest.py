@@ -33,7 +33,7 @@ else:
 		c.execute('INSERT INTO results VALUES ( "'+userName+'", '+result+', "'+type+'", datetime("now"))')
 		
 	else:
-		for row in c.execute("SELECT * FROM results WHERE username="+userName+" ORDER BY time ASC  LIMIT 10000"):
+		for row in c.execute("SELECT * FROM results WHERE username='"+userName+"' ORDER BY time ASC  LIMIT 10000"):
 			print row
 		
 #c.execute("SELECT * from counter")
