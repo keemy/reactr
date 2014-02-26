@@ -30,7 +30,7 @@ function submitResult(result,type){
 }
 function getResults(){
 	$.ajax("backendtest.py?readonly=true&username="+userName).done(function(data){
-		$("#counter").text(data);
+		console.log(data);
 	});
 }
 

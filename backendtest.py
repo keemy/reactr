@@ -14,19 +14,27 @@ c=conn.cursor()
 
 form=cgi.FieldStorage()
 
+
+#don't want injection attacks
+def clean(text):
+	return "".join([l for l in text if l.isalnum()])
+
 if "readonly" not in form:
 	pass
  #   c.execute("UPDATE counter SET num=num+1")
 else:
+	userName=clean(form["username"].value)
+	
 	if form["readonly"].value=="false":
-		userName=form["username"].value
-		result=form["result"].value
-		type=form["type"].value
+		
+		result=clean(form["result"].value)
+		type=clean(form["type"].value)
 		print 'INSERT INTO results VALUES ( "'+userName+'", '+result+', "'+type+'", datetime("now"))'
 		c.execute('INSERT INTO results VALUES ( "'+userName+'", '+result+', "'+type+'", datetime("now"))')
 		
 	else:
-		pass
+		for row in c.execute("SELECT * FROM results WHERE username="+userName+" ORDER BY time ASC  LIMIT 10000"):
+			print row
 		
 #c.execute("SELECT * from counter")
 #count=c.fetchone()
