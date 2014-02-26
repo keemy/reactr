@@ -21,9 +21,10 @@ else:
 	if form["readonly"]=="false":
 		print 'INSERT INTO results VALUES ( "'+form["username"]+'", '+form["result"]+', "'+form["type"]+'", datetime("now"))'
 		c.execute('INSERT INTO results VALUES ( "'+form["username"]+'", '+form["result"]+', "'+form["type"]+'", datetime("now"))')
-		print 'INSERT INTO results VALUES ( "'+form["username"]+'", '+form["result"]+', "'+form["type"]+'", datetime("now"))'
+		
 	else:
-		pass
+		print "wort"
+		#pass
 		
 #c.execute("SELECT * from counter")
 #count=c.fetchone()
