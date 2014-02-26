@@ -1,5 +1,4 @@
 var listOfTests=["sound","visual","visual2"];
-var userName=prompt("whats ur name");
 
 function setCookie(c_name,value,exdays){
 	var exdate=new Date();
@@ -7,8 +6,30 @@ function setCookie(c_name,value,exdays){
 	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
 	document.cookie=c_name + "=" + c_value;
 }
+function getCookie(c_name){
+	var name = c_name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) 
+			return c.substring(name.length,c.length);
+	}
+	return "";
+}
 
-setCookie("userName",userName,30);
+var userName=getCookie("userName");
+if(userName==""){
+	vuserName=prompt("whats ur name");
+	setCookie("userName",userName,30);
+}
+
+function submitResult(result,type){
+	$.ajax("backendtest.py?readonly=false&username="+userName+"&result="+result.toString()+"&type="+type).done(function(data){
+		$("#counter").text(data);
+	});
+}
+
+
 
 
 $( document ).ready(function() {
@@ -43,7 +64,7 @@ $( document ).ready(function() {
 	$(".testtime").append("<p class='scoldText' style='display: none;'>Too Soon</p>");
 	$(".testtime").append("<p class='timeText' style='display: none;'>GO!!</p>");
 	$(".testtime").append("<p class='resultText' style='display: none;'></p>");
-	
+
 	
 
 	// $(".test").append('<form class="testtime"></form>')

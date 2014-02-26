@@ -68,11 +68,18 @@ $( document ).ready(function() {
 			elm.find("p").hide();
 			elm.find(".timeText").show();
 			
+			
 			var snd = new Audio("beep.wav"); // buffers automatically when created
-			snd.play();
-
-			timeStart = performance.now();
-			state="time";
+			snd.addEventListener('canplaythrough', function(){
+				snd.play();
+				timeStart = performance.now();
+				state="time";
+			}, false);
+			
+				
+			
+			
+			
 			
 		},
 		time:function(){
