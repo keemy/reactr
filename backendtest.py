@@ -40,7 +40,12 @@ else:
 				data[row[2]].append([row[3],row[1]])
 			else:
 				data[row[2]]=[[row[3],row[1]]]
-		print json.dumps(data)
+		output=[]
+		for test in data:
+			temp={name:test}
+			temp["data"]=data[test]
+			output.append(temp)
+		print json.dumps(temp)
 		
 #c.execute("SELECT * from counter")
 #count=c.fetchone()
