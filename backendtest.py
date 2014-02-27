@@ -42,7 +42,7 @@ else:
 				data[row[2]]=[[row[3],row[1]]]
 		output=[]
 		for test in data:
-			temp={name:test}
+			temp={"name":test}
 			temp["data"]=data[test]
 			output.append(temp)
 		print json.dumps(temp)
