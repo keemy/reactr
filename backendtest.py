@@ -45,7 +45,7 @@ else:
 			temp={"name":test}
 			temp["data"]=data[test]
 			output.append(temp)
-		print json.dumps(temp)
+		print json.dumps(output)
 		
 #c.execute("SELECT * from counter")
 #count=c.fetchone()
