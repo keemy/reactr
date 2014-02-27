@@ -28,17 +28,41 @@ function submitResult(result,type){
 		console.log(data);
 	});
 }
+
+
 var userResults={}
+var options = {
+	chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Your Historical Times'
+    },
+    xAxis: {
+        categories: []
+    },
+    yAxis: {
+        title: {
+            text: 'Units'
+        }
+    },
+    series: []
+};
+
+
 function getResults(){
 	$.ajax("backendtest.py?readonly=true&username="+userName).done(function(data){
 		console.log(data);
 		userResults=$.parseJSON(data);
+		options.series=userResults;
 		
 	});
 }
 
 
-
+$(function () {
+        $('#history').highcharts(options);
+});
 
 
 $( document ).ready(function() {
