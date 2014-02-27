@@ -6,6 +6,7 @@ print
 import cgi
 import cgitb
 import sqlite3
+import json
 cgitb.enable()
 conn = sqlite3.connect('results.db')
 #CREATE TABLE results ( username TEXT, result INTEGER, testID TEXT,time TEXT )
@@ -39,7 +40,7 @@ else:
 				data[row[2]].append([row[3],row[1]])
 			else:
 				data[row[2]]=[[row[3],row[1]]]
-		print data
+		print json.dumps(data)
 		
 #c.execute("SELECT * from counter")
 #count=c.fetchone()
