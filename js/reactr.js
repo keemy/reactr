@@ -32,7 +32,7 @@ var userResults={}
 function getResults(){
 	$.ajax("backendtest.py?readonly=true&username="+userName).done(function(data){
 		console.log(data);
-		userResults=data;
+		userResults=$.parseJSON(data.split("u'").join("'"));
 	});
 }
 
