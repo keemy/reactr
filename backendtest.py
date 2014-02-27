@@ -33,8 +33,13 @@ else:
 		c.execute('INSERT INTO results VALUES ( ?, ?, ?, datetime("now"))', (userName,int(result),type))
 		
 	else:
+		data={}
 		for row in c.execute("SELECT * FROM results WHERE username=? ORDER BY time ASC  LIMIT 10000",(userName,)):
-			print row
+			if row[2] in data:
+				data[row[2]].append([row[3],row[1]])
+			else:
+				data[row[2]]=[[row[3],row[1]]]
+		print data
 		
 #c.execute("SELECT * from counter")
 #count=c.fetchone()
