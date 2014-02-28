@@ -33,7 +33,7 @@ function submitResult(result,type){
 var userResults={}
 var options = {
 	chart: {
-        type: 'spline'
+        type: 'spline',
 		zoomType: 'x'
     },
     title: {
