@@ -105,7 +105,9 @@ $( document ).ready(function() {
 	$("#Tests").change(function(){
 		//generate charts everytime chest changes probably should move this somewhere else
 		getResults();
-		$('#history').highcharts(options);
+		$(function () {
+			$('#history').highcharts(options);
+		});
 			
 		runTest($('#Tests').val());
 		
