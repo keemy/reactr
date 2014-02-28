@@ -38,14 +38,14 @@ var options = {
     title: {
         text: 'Your Historical Times'
     },
-    // xAxis: {
-        // categories: []
-    // },
-    // yAxis: {
-        // title: {
-            // text: 'Units'
-        // }
-    // },
+    xAxis: {
+		type: 'datetime'
+    },
+     yAxis: {
+         title: {
+            text: 'miliseconds'
+         }
+    },
     series: []
 };
 

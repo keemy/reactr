@@ -38,7 +38,7 @@ else:
 	else:
 		data={}
 		for row in c.execute("SELECT * FROM results WHERE username=? ORDER BY time ASC  LIMIT 10000",(userName,)):
-			epoctime=time.mktime(datetime.datetime.strptime(row[3],"%Y-%m-%d %H:%M:%S").timetuple())
+			epoctime=time.mktime(datetime.datetime.strptime(row[3],"%Y-%m-%d %H:%M:%S").timetuple())*1000
 			if row[2] in data:
 				data[row[2]].append([epoctime,row[1]])
 			else:
