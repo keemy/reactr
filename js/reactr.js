@@ -34,6 +34,7 @@ var userResults={}
 var options = {
 	chart: {
         type: 'spline'
+		zoomType: 'x'
     },
     title: {
         text: 'Your Historical Times'
@@ -55,14 +56,14 @@ function getResults(){
 		console.log(data);
 		userResults=$.parseJSON(data);
 		options.series=userResults;
-		
+		reDrawGraph();
 	});
 }
 
 
-$(function () {
+function reDrawGraph() {
         $('#history').highcharts(options);
-});
+}
 
 
 $( document ).ready(function() {
@@ -105,9 +106,7 @@ $( document ).ready(function() {
 	$("#Tests").change(function(){
 		//generate charts everytime chest changes probably should move this somewhere else
 		getResults();
-		$(function () {
-			$('#history').highcharts(options);
-		});
+		
 			
 		runTest($('#Tests').val());
 		
