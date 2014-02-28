@@ -7,6 +7,8 @@ import cgi
 import cgitb
 import sqlite3
 import json
+import datetime
+import time
 cgitb.enable()
 conn = sqlite3.connect('results.db')
 #CREATE TABLE results ( username TEXT, result INTEGER, testID TEXT,time TEXT )
@@ -36,10 +38,11 @@ else:
 	else:
 		data={}
 		for row in c.execute("SELECT * FROM results WHERE username=? ORDER BY time ASC  LIMIT 10000",(userName,)):
+			epoctime=time.mktime(datetime.datetime.strptime(row[3],"%Y-%m-%d %H:%M:%S").timetuple())
 			if row[2] in data:
-				data[row[2]].append([row[3],row[1]])
+				data[row[2]].append([epoctime,row[1]])
 			else:
-				data[row[2]]=[[row[3],row[1]]]
+				data[row[2]]=[[epoctime,row[1]]]
 		output=[]
 		for test in data:
 			temp={"name":test}
