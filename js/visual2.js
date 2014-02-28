@@ -97,6 +97,9 @@ $( document ).ready(function() {
 			submitResult(reactionTime.toString(),"visual2");
 			
 			
+			
+			
+			
 			state="result";
 		},
 		result:function(){

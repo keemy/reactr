@@ -103,7 +103,12 @@ $( document ).ready(function() {
 	
 	//onchange="runTest($('#Tests').options[Tests.selectedIndex].text)"
 	$("#Tests").change(function(){
+		#generate charts everytime chest changes probably should move this somewhere else
+		getResults();
+		$('#history').highcharts(options);
+			
 		runTest($('#Tests').val());
+		
 	});
 	
 	
